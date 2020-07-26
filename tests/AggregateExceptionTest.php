@@ -8,8 +8,11 @@ class AggregateExceptionTest extends TestCase
 {
     public function testHasReason()
     {
-        $e = new AggregateException('foo', ['baz', 'bar']);
-        $this->assertContains('foo', $e->getMessage());
-        $this->assertEquals(['baz', 'bar'], $e->getReason());
+        $reasons = ['baz', 'bar'];
+
+        $e = new AggregateException('foo', $reasons);
+
+        $this->assertContains('foo; ' . count($reasons) . ' rejected promises', $e->getMessage());
+        $this->assertEquals($reasons, $e->getReason());
     }
 }
