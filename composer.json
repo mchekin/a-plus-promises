@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mchekin\\A-Plus-Promises\\": "src/"
+            "Mchekin\\APlusPromises\\": "src/"
         }
     },
     "autoload-dev": {
