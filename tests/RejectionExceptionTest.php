@@ -1,4 +1,5 @@
 <?php
+
 namespace Mchekin\APlusPromises\Tests;
 
 use Mchekin\APlusPromises\RejectionException;
