@@ -1,2 +1,2 @@
-# a-plus-promises
-Learning A Plus Promises through by re-implementing guzzle/promises. 
+# A Plus Promises
+Learning A Plus Promises by re-implementing guzzle/promises. 
