@@ -6,6 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class Thing1
 {
+    private $message;
+
     public function __construct($message)
     {
         $this->message = $message;
@@ -26,13 +28,25 @@ class Thing2 implements \JsonSerializable
 }
 
 /**
- * @covers Mchekin\APlusPromises\RejectionException
+ * @covers \Mchekin\APlusPromises\RejectionException
  */
 class RejectionExceptionTest extends TestCase
 {
-    public function testCanGetReasonFromException()
+
+    public function testCanGetReasonMessageFromDescription()
+    {
+        $reason = 'Ignored reason';
+        $description = 'So rejected!';
+
+        $e = new RejectionException($reason, $description);
+
+        $this->assertContains('The promise was rejected with reason: ' . $description, $e->getMessage());
+    }
+
+    public function testCanGetReasonMessageFromString()
     {
         $thing = new Thing1('foo');
+
         $e = new RejectionException($thing);
 
         $this->assertSame($thing, $e->getReason());
@@ -42,7 +56,9 @@ class RejectionExceptionTest extends TestCase
     public function testCanGetReasonMessageFromJson()
     {
         $reason = new Thing2();
+
         $e = new RejectionException($reason);
-        $this->assertContains("{}", $e->getMessage());
+
+        $this->assertContains('{}', $e->getMessage());
     }
 }
