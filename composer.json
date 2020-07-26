@@ -19,12 +19,11 @@
     "autoload": {
         "psr-4": {
             "Mchekin\\A-Plus-Promises\\": "src/"
-        },
-        "files": ["src/functions_include.php"]
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Mchekin\\A-Plus-Promises\\Tests\\": "tests/"
+            "Mchekin\\APlusPromises\\Tests\\": "tests/"
         }
     },
     "scripts": {
